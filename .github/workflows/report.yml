@@ -30,6 +30,8 @@ jobs:
       # build the report
       - id: matomoboard-report
         uses: SocialGouv/matomoboard-actions/report@v1
+        with:
+          base-path: /matomoboard
 
       # deploy build to gh-pages
       - name: Deploy 🚀
