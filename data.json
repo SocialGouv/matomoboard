@@ -1,5 +1,3 @@
-yarn run v1.22.18
-$ node index
 {
   "date": "2022-04-25T09:19:24.913Z",
   "url": "https://matomo.fabrique.social.gouv.fr",
@@ -103019,4 +103017,3 @@ $ node index
     }
   ]
 }
-Done in 783.25s.
