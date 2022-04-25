@@ -1,0 +1,29 @@
+name: Update Matomo data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *" # every hour, see https://crontab.guru
+
+# allow only one concurrent scan action
+concurrency:
+  cancel-in-progress: true
+  group: fetch
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Fetch data
+        uses: "socialgouv/matomoboard-actions/fetch@v1"
+        with:
+          matomo-url: ${{ secrets.MATOMO_URL }}
+          matomo-token: ${{ secrets.MATOMO_TOKEN }}
+          output: data.json
+      - uses: EndBug/add-and-commit@v7
+        with:
+          add: '["data.json"]'
+          author_name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
+          author_email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
+          message: "update: matomo data"

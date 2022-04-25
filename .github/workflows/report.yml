@@ -1,0 +1,39 @@
+name: MatomoBoard report
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Update Matomo data"]
+    branches: [main]
+    types:
+      - completed
+
+# allow only one concurrent report action
+concurrency:
+  cancel-in-progress: true
+  group: report
+
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    name: Website
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      # build the report
+      - id: matomoboard-report
+        uses: SocialGouv/matomoboard-actions/report@v1
+
+      # deploy build to gh-pages
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: build
