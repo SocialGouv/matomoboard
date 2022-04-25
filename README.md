@@ -22,8 +22,4 @@ Compile your matomo metrics in a single static web interface
 
 ## Dev
 
-This repository is the template to setup the workflows and publish the website
-
-The repository root contains the GH-action and fetch scripts that produces `data.json`
-
-The `www` repository contains the website that renders UI from `data.json`
+Check the [matomoboard-actions](https://github.com/socialgouv/matomoboard-actions) repo for the code;
