@@ -2,6 +2,8 @@
 
 Compile your matomo metrics in a single static web interface
 
+Demo : https://socialgouv.github.io/matomoboard
+
 ## How it works
 
 - a scheduled github action fetch data from your matomo API every hour and store the result in GIT
