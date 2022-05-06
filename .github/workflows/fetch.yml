@@ -3,7 +3,7 @@ name: Update Matomo data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *" # every hour, see https://crontab.guru
+    - cron: "0 8-20/2 * * *" # At minute 0 past every 2nd hour from 8 through 20, see https://crontab.guru/#0_8-20/2_*_*_*
 
 # allow only one concurrent scan action
 concurrency:
