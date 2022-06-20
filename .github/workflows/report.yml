@@ -39,3 +39,5 @@ jobs:
         with:
           branch: gh-pages
           folder: build
+          git-config-name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
+          git-config-email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
